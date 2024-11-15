@@ -223,6 +223,42 @@ body {
   background-color: #002031;
 }
 
+/* portfolio */
+.portfolio h1 {
+  text-align: center;
+  font-size: 60px;
+  color: red;
+}
+
+.portfolio h1 span {
+  color: #ffeb3b;
+}
+
+.port-card {
+  display: flexbox;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.port-card p {
+  font-size: 17px;
+  padding-bottom: 5px;
+}
+
+.port-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.port-card img {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+}
+
 /* exp */
 .experience {
   padding-top: 150px;
