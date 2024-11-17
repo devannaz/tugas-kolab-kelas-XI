@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 15, 2024 at 01:36 PM
+-- Generation Time: Nov 17, 2024 at 01:36 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -41,18 +41,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`Id_About`, `Bio`, `Bio 2`, `Name`, `Picture`, `id_developer`) VALUES
-(1, 'Hey there! I\'m, a high school student with a passion for Drawing.', 'I\'m always up for learning new things and taking on challenges—whether it\'s a school project or a personal goal. Recently, I\'ve been focused on my skill as an Digital Artist, and I’m excited to see where it takes me.', 'M.Nazriel Devanaya Heris', '4.jpg', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contact1`
---
-
-CREATE TABLE `contact1` (
-  `Id_Contact` int NOT NULL,
-  `Gambar` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+(1, 'Hey there! I\'m, a high school student with a passion for Drawing.', 'I\'m always up for learning new things and taking on challenges—whether it\'s a school project or a personal goal. Recently, I\'ve been focused on my skill as an Digital Artist, and I’m excited to see where it takes me.', 'M.Nazriel Devanaya Heris', '2.png', 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +62,7 @@ CREATE TABLE `developer` (
 --
 
 INSERT INTO `developer` (`Id_Developer`, `Name`, `job`, `bio`, `gambar`) VALUES
-(1, 'Nazriel Devanaya', 'Illustrator', 'I’m an artist who makes visual images to enhance or explain concepts, stories, products, websites.', '4.jpg');
+(1, 'Nazriel Devanaya', 'Illustrator', 'I’m an artist who makes visual images to enhance or explain concepts, stories, products, websites.', '2.png');
 
 -- --------------------------------------------------------
 
@@ -85,16 +74,17 @@ CREATE TABLE `experience` (
   `Id_Experience` int NOT NULL,
   `Title` varchar(100) DEFAULT NULL,
   `Subtitle` varchar(255) DEFAULT NULL,
-  `Description` text
+  `Description` text,
+  `id_developer` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `experience`
 --
 
-INSERT INTO `experience` (`Id_Experience`, `Title`, `Subtitle`, `Description`) VALUES
-(1, 'Shading and Adding Highlight', 'From 2022 - Present', 'Taking an online Course and pratice with a friends'),
-(2, 'Sketch and Line art Training', 'From 2020 - 2022', 'With a friend or watch youtube tutorials and also practice a lot');
+INSERT INTO `experience` (`Id_Experience`, `Title`, `Subtitle`, `Description`, `id_developer`) VALUES
+(1, 'Shading and Adding Highlight', 'From 2022 - Present', 'Taking an online Course and pratice with a friends', 1),
+(2, 'Sketch and Line art Training', 'From 2020 - 2022', 'With a friend or watch youtube tutorials and also practice a lot', 1);
 
 -- --------------------------------------------------------
 
@@ -119,17 +109,18 @@ CREATE TABLE `form` (
 CREATE TABLE `portfolio` (
   `Id_Portfolio` int NOT NULL,
   `Subtitle` varchar(255) DEFAULT NULL,
-  `Picture` varchar(255) DEFAULT NULL
+  `Picture` varchar(255) DEFAULT NULL,
+  `id_developer` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `portfolio`
 --
 
-INSERT INTO `portfolio` (`Id_Portfolio`, `Subtitle`, `Picture`) VALUES
-(1, 'Anime pfp', 'p3.jpg'),
-(2, 'Emotes', 'p1.jpg'),
-(3, 'Anime Chibi', 'p2.jpg');
+INSERT INTO `portfolio` (`Id_Portfolio`, `Subtitle`, `Picture`, `id_developer`) VALUES
+(1, 'Anime pfp', 'p3.jpg', 1),
+(2, 'Emotes', 'p1.jpg', 1),
+(3, 'Anime Chibi', 'p2.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -149,9 +140,9 @@ CREATE TABLE `skill` (
 --
 
 INSERT INTO `skill` (`Id_Skill`, `Id_Developer`, `Picture`, `Subtitle`) VALUES
-(1, NULL, '1.jpg', 'Chibi Anime'),
-(2, NULL, '2.jpg', 'Twitch Emotes'),
-(3, NULL, '3.jpg', 'Anime pfp');
+(1, 1, '1.jpg', 'Chibi Anime'),
+(2, 1, '2.jpg', 'Twitch Emotes'),
+(3, 1, '3.jpg', 'Anime pfp');
 
 --
 -- Indexes for dumped tables
@@ -166,12 +157,6 @@ ALTER TABLE `about`
   ADD KEY `id_developer` (`id_developer`);
 
 --
--- Indexes for table `contact1`
---
-ALTER TABLE `contact1`
-  ADD PRIMARY KEY (`Id_Contact`);
-
---
 -- Indexes for table `developer`
 --
 ALTER TABLE `developer`
@@ -183,7 +168,9 @@ ALTER TABLE `developer`
 -- Indexes for table `experience`
 --
 ALTER TABLE `experience`
-  ADD PRIMARY KEY (`Id_Experience`);
+  ADD PRIMARY KEY (`Id_Experience`),
+  ADD KEY `id_developer` (`id_developer`),
+  ADD KEY `id_developer_2` (`id_developer`);
 
 --
 -- Indexes for table `form`
@@ -195,7 +182,8 @@ ALTER TABLE `form`
 -- Indexes for table `portfolio`
 --
 ALTER TABLE `portfolio`
-  ADD PRIMARY KEY (`Id_Portfolio`);
+  ADD PRIMARY KEY (`Id_Portfolio`),
+  ADD KEY `id_developer` (`id_developer`);
 
 --
 -- Indexes for table `skill`
@@ -215,12 +203,6 @@ ALTER TABLE `about`
   MODIFY `Id_About` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `contact1`
---
-ALTER TABLE `contact1`
-  MODIFY `Id_Contact` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `developer`
 --
 ALTER TABLE `developer`
@@ -236,13 +218,13 @@ ALTER TABLE `experience`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `portfolio`
 --
 ALTER TABLE `portfolio`
-  MODIFY `Id_Portfolio` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_Portfolio` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `skill`
@@ -253,6 +235,24 @@ ALTER TABLE `skill`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `about`
+--
+ALTER TABLE `about`
+  ADD CONSTRAINT `about_ibfk_1` FOREIGN KEY (`id_developer`) REFERENCES `developer` (`Id_Developer`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `experience`
+--
+ALTER TABLE `experience`
+  ADD CONSTRAINT `experience_ibfk_1` FOREIGN KEY (`id_developer`) REFERENCES `developer` (`Id_Developer`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `portfolio`
+--
+ALTER TABLE `portfolio`
+  ADD CONSTRAINT `portfolio_ibfk_1` FOREIGN KEY (`id_developer`) REFERENCES `developer` (`Id_Developer`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `skill`

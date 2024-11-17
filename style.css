@@ -224,39 +224,50 @@ body {
 }
 
 /* portfolio */
-.portfolio h1 {
+.portfolio {
+  background-color: #00293f;
+}
+.portfolio h2 {
   text-align: center;
   font-size: 60px;
-  color: red;
+  color: #e40046;
+  font-weight: bold;
 }
 
-.portfolio h1 span {
-  color: #ffeb3b;
+.portfolio h2 span {
+  color: #ffc906;
+  font-weight: bold;
 }
 
 .port-card {
-  display: flexbox;
+  height: 400px;
+  width: 350px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .port-card p {
-  font-size: 17px;
-  padding-bottom: 5px;
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 20px;
+  color: #cacaca;
 }
 
 .port-wrap {
+  padding-top: 40px;
   display: flex;
+  gap: 40px;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
 }
 
 .port-card img {
-  width: 200px;
-  height: 150px;
-  border-radius: 10px;
+  width: 250px;
+  height: 250px;
+  border-radius: 30px;
 }
 
 /* exp */
@@ -364,22 +375,6 @@ body {
   background-color: #ffcc15;
 }
 
-/* portfolio */
-.portfolio {
-  background-color: #00293f;
-}
-
-.portfolio h1 {
-  font-size: 60px;
-  text-align: center;
-  color: #e40046;
-  font-weight: bold;
-}
-
-.port-card h1 span {
-  color: #ffc906;
-}
-
 /* Experience */
 .experience {
   text-align: center;
@@ -410,6 +405,7 @@ body {
   color: black;
   border-radius: 30px;
   margin-bottom: 50px;
+  padding: 50px;
 }
 
 .experience-card h1 {
@@ -428,9 +424,10 @@ body {
 
 /* Contact */
 .contact-container {
-  padding-top: 150px;
+  padding-top: 50px;
   display: flex;
   padding-left: 50px;
+  padding-bottom: 100px;
   background-color: #00293f;
 }
 .contact-form {
